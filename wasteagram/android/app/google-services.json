@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "10277058792",
+    "firebase_url": "https://densmora-wasteagram.firebaseio.com",
+    "project_id": "densmora-wasteagram",
+    "storage_bucket": "densmora-wasteagram.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10277058792:android:c48dd5fbd8ace8e384715d",
+        "android_client_info": {
+          "package_name": "edu.oregonstate.densmora.wasteagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10277058792-jlejll5vb8sl2s2um3p8l87dlu9hivii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlxBC2pBjoTBIsyU8mIqa05zxYU9NovR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10277058792-jlejll5vb8sl2s2um3p8l87dlu9hivii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
