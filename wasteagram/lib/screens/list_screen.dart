@@ -10,6 +10,8 @@ class ListScreen extends StatefulWidget {
 class _ListScreenState extends State<ListScreen> {
   int totalQuantityWasted;
 
+  // TODO: Implement updating totalQuantityWasted.
+
   @override
   void initState() {
     super.initState();
@@ -32,7 +34,9 @@ class _ListScreenState extends State<ListScreen> {
       fab: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          
+          setState(() {
+            
+          });
         },
       ),
     );
