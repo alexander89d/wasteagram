@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 
 class WasteagramScaffold extends StatelessWidget {
-  static const title = 'Wasteagram';
-  final List<Widget> actions;
+  final String title;
   final Widget body;
+  final FloatingActionButton fab;
 
-  WasteagramScaffold({Key key, this.actions, this.body}) : super(key: key);
+  WasteagramScaffold({
+    Key key, 
+    @required this.title, 
+    @required this.body, 
+    this.fab
+  }) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
-        actions: actions,
+        centerTitle: true,
       ),
       body: body,
+      floatingActionButton: fab,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
