@@ -13,6 +13,22 @@ class PostList extends StatefulWidget {
 class _PostListState extends State<PostList> {
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return StreamBuilder(
+      stream: Firestore.instance.collection('posts').snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            itemCount: snapshot.data.documents.length,
+            itemBuilder: (context, index) {
+              var post = snapshot.data.documents[index];
+              widget.addToTotalQuantityWasted(post['quantity']);
+              // TODO: Add code to add list tile
+            }
+          );
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      }
+    );
   }
 }
