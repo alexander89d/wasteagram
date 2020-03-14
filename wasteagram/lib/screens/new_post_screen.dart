@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+import '../widgets/new_post_form.dart';
 import '../widgets/wasteagram_scaffold.dart';
 
-class NewPostScreen extends StatefulWidget {
-  @override
-  _NewPostScreenState createState() => _NewPostScreenState();
-}
-
-class _NewPostScreenState extends State<NewPostScreen> {
+class NewPostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WasteagramScaffold(
       title: 'Wasteagram', 
       body: Center(
-        child: Text(
-          'Add New Entry',
-          style: Theme.of(context).textTheme.display1,
+        child: FractionallySizedBox(
+          widthFactor: 0.9,
+          heightFactor: 0.9,
+          child: SingleChildScrollView(
+            child: NewPostForm(),
+          ),
         ),
       ),
     );
