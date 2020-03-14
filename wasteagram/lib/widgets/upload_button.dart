@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UploadButton extends StatefulWidget {
   final GlobalKey<FormState> formKey;
+  final Map<String, dynamic> newPost;
 
-  UploadButton({Key key, this.formKey});
+  UploadButton({Key key, this.formKey, this.newPost}) : super(key: key);
   
   @override
   _UploadButtonState createState() => _UploadButtonState();
 }
 
 class _UploadButtonState extends State<UploadButton> {
+  // TODO: Watch videos on Stream / StreamBuilder, skip adding data to Firestore, watch all others after.
+  // TODO: Implement gathering Latitude / Longitude
+  // TODO: Implement picking image and uploading it
+  // TODO: Figure out how to sort posts from newest to oldest
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,8 +25,11 @@ class _UploadButtonState extends State<UploadButton> {
             onPressed: () {
               if (widget.formKey.currentState.validate()) {
                 widget.formKey.currentState.save();
-                // Here is where data would be passed to database,
-                // passing donutFormFields object.
+                widget.newPost['date'] = DateTime.now().toString();
+                widget.newPost['imageURL'] = '(image url will go here)';
+                widget.newPost['latitude'] = '-80.0';
+                widget.newPost['longitude'] = '5.8';
+                Firestore.instance.collection('posts').add(widget.newPost);
                 Navigator.of(context).pop();
               }
             },

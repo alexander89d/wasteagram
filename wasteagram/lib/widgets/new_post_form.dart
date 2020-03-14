@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 import 'upload_button.dart';
 
-class NewPostDTO {
-  DateTime date;
-  String imageURL;
-  int quantity;
-  double latitude;
-  double longitude;
-}
-
 class NewPostForm extends StatefulWidget {
   @override
   _NewPostFormState createState() => _NewPostFormState();
@@ -16,7 +8,7 @@ class NewPostForm extends StatefulWidget {
 
 class _NewPostFormState extends State<NewPostForm> {
   final formKey = GlobalKey<FormState>();
-  final newPost = NewPostDTO();
+  final Map<String, dynamic> newPost = {};
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +26,12 @@ class _NewPostFormState extends State<NewPostForm> {
               border: OutlineInputBorder(),
             ),
             onSaved: (value) {
-              newPost.quantity = int.parse(value);
+              newPost['quantity'] = int.parse(value);
             },
             validator: _quantityValidator,
           ),
           SizedBox(height: 10),
-          UploadButton(formKey: formKey),
+          UploadButton(formKey: formKey, newPost: newPost),
         ],
       ),
     );
