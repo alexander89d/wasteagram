@@ -21,8 +21,11 @@ class _PostListState extends State<PostList> {
             itemCount: snapshot.data.documents.length,
             itemBuilder: (context, index) {
               var post = snapshot.data.documents[index];
-              widget.addToTotalQuantityWasted(post['quantity']);
-              // TODO: Add code to add list tile
+              //widget.addToTotalQuantityWasted(post['quantity']);
+              return ListTile(
+                title: Text(post['date']),
+                trailing: Text(post['quantity'].toString()),
+              );
             }
           );
         } else {
