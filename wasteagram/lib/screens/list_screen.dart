@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/new_post_screen.dart';
 import '../widgets/post_list.dart';
 import '../widgets/wasteagram_scaffold.dart';
 
@@ -34,9 +35,13 @@ class _ListScreenState extends State<ListScreen> {
       fab: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          setState(() {
-            
-          });
+          Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (context) {
+                return NewPostScreen();
+              }
+            ),
+          );
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/food_waste_post.dart';
+import '../screens/post_detail_screen.dart';
 
 class PostList extends StatefulWidget {
   final void Function(int) addToTotalQuantityWasted;
@@ -24,7 +25,17 @@ class _PostListState extends State<PostList> {
               //widget.addToTotalQuantityWasted(post['quantity']);
               return ListTile(
                 title: Text('${post.formattedDateWithoutYear}'),
-                trailing: Text('${post.quantity}'),
+                trailing: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    shape: BoxShape.circle,
+                  ),
+                  padding: EdgeInsets.all(12),
+                  child: Text('${post.quantity}'),
+                ),
+                onTap: () {
+                  _pushDetailScreen(context, post);
+                },
               );
             }
           );
@@ -32,6 +43,18 @@ class _PostListState extends State<PostList> {
           return Center(child: CircularProgressIndicator());
         }
       }
+    );
+  }
+
+  void _pushDetailScreen(BuildContext context, FoodWastePost post) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (context) {
+          return DetailScreen(
+            post: post,
+          );
+        }
+      ),
     );
   }
 }
