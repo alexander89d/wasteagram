@@ -4,12 +4,7 @@ import '../widgets/main_page_title.dart';
 import '../widgets/post_list.dart';
 import '../widgets/wasteagram_scaffold.dart';
 
-class ListScreen extends StatefulWidget {
-  @override
-  _ListScreenState createState() => _ListScreenState();
-}
-
-class _ListScreenState extends State<ListScreen> {
+class ListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WasteagramScaffold(
