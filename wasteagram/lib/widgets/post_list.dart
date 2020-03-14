@@ -4,9 +4,6 @@ import '../models/food_waste_post.dart';
 import '../screens/post_detail_screen.dart';
 
 class PostList extends StatefulWidget {
-  final void Function(int) addToTotalQuantityWasted;
-  PostList({Key key, this.addToTotalQuantityWasted}) : super(key: key);
-  
   @override
   _PostListState createState() => _PostListState();
 }
@@ -22,7 +19,6 @@ class _PostListState extends State<PostList> {
             itemCount: snapshot.data.documents.length,
             itemBuilder: (context, index) {
               final post = FoodWastePost.fromMap(snapshot.data.documents[index]);
-              //widget.addToTotalQuantityWasted(post['quantity']);
               return ListTile(
                 title: Text('${post.formattedDateWithoutYear}'),
                 trailing: Container(

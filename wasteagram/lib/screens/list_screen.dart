@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/new_post_screen.dart';
+import '../widgets/main_page_title.dart';
 import '../widgets/post_list.dart';
 import '../widgets/wasteagram_scaffold.dart';
 
@@ -9,29 +10,11 @@ class ListScreen extends StatefulWidget {
 }
 
 class _ListScreenState extends State<ListScreen> {
-  int totalQuantityWasted;
-
-  // TODO: Implement updating totalQuantityWasted.
-
-  @override
-  void initState() {
-    super.initState();
-    totalQuantityWasted = 0;
-  }
-  
-  void addToTotalQuantityWasted(int quantity) {
-    setState(() {
-      totalQuantityWasted += quantity;
-    });
-  }
-  
   @override
   Widget build(BuildContext context) {
     return WasteagramScaffold(
-      title: 'Wasteagram - $totalQuantityWasted',
-      body: PostList(
-        addToTotalQuantityWasted: addToTotalQuantityWasted,
-      ),
+      title: MainPageTitle(),
+      body: PostList(),
       fab: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {

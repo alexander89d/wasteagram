@@ -6,7 +6,7 @@ class NewPostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WasteagramScaffold(
-      title: 'Wasteagram', 
+      title: Text('Wasteagram'), 
       body: Center(
         child: FractionallySizedBox(
           widthFactor: 0.9,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class WasteagramScaffold extends StatelessWidget {
-  final String title;
+  final Widget title;
   final Widget body;
   final FloatingActionButton fab;
 
@@ -16,7 +16,7 @@ class WasteagramScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: title,
         centerTitle: true,
       ),
       body: body,
