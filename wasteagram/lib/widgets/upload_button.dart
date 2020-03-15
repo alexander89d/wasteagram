@@ -13,7 +13,6 @@ class UploadButton extends StatefulWidget {
 
 class _UploadButtonState extends State<UploadButton> {
   // TODO: Implement gathering Latitude / Longitude
-  // TODO: Implement picking image and uploading it
   // TODO: Figure out how to sort posts from newest to oldest
   @override
   Widget build(BuildContext context) {

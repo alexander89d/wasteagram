@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/food_waste_post.dart';
+import '../widgets/image_limited_box.dart';
 import '../widgets/wasteagram_scaffold.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -24,7 +25,11 @@ class DetailScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline,
                 ),
                 SizedBox(height: 20.0),
-                SizedBox(height: 300.0, child: Placeholder()),
+                ImageLimitedBox(
+                  imageURL: post.imageURL,
+                  portraitMaxHeightFactor: 0.5,
+                  landscapeMaxHeightFactor: 0.5,
+                ),
                 SizedBox(height: 20),
                 Text(
                   'Items: ${post.quantity}',

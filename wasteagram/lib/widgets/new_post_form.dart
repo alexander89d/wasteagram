@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'image_limited_box.dart';
 import 'upload_button.dart';
 
 class NewPostForm extends StatefulWidget {
@@ -27,9 +28,10 @@ class _NewPostFormState extends State<NewPostForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          LimitedBox(
-            maxHeight: _imageMaxHeight(context),
-            child: Image.network(widget.imageURL),
+          ImageLimitedBox(
+            imageURL: widget.imageURL,
+            portraitMaxHeightFactor: 0.5,
+            landscapeMaxHeightFactor: 0.5,
           ),
           SizedBox(height: 10),
           TextFormField(
@@ -44,19 +46,11 @@ class _NewPostFormState extends State<NewPostForm> {
             },
             validator: _quantityValidator,
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 50),
           UploadButton(formKey: formKey, newPost: newPost),
         ],
       ),
     );
-  }
-
-  double _imageMaxHeight(BuildContext context) {
-    if (MediaQuery.of(context).orientation == Orientation.portrait) {
-      return 0.5 * MediaQuery.of(context).size.height;
-    } else {
-      return 0.5 * MediaQuery.of(context).size.height;
-    }
   }
 
   String _quantityValidator(String value) {
