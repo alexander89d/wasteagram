@@ -12,7 +12,6 @@ class UploadButton extends StatefulWidget {
 }
 
 class _UploadButtonState extends State<UploadButton> {
-  // TODO: Watch videos on Stream / StreamBuilder, skip adding data to Firestore, watch all others after.
   // TODO: Implement gathering Latitude / Longitude
   // TODO: Implement picking image and uploading it
   // TODO: Figure out how to sort posts from newest to oldest
@@ -26,7 +25,6 @@ class _UploadButtonState extends State<UploadButton> {
               if (widget.formKey.currentState.validate()) {
                 widget.formKey.currentState.save();
                 widget.newPost['date'] = DateTime.now().toString();
-                widget.newPost['imageURL'] = '(image url will go here)';
                 widget.newPost['latitude'] = '-80.0';
                 widget.newPost['longitude'] = '5.8';
                 Firestore.instance.collection('posts').add(widget.newPost);

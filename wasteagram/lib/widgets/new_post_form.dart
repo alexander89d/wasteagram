@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'upload_button.dart';
 
 class NewPostForm extends StatefulWidget {
+  final String imageURL;
+
+  NewPostForm({Key key, this.imageURL}) : super(key: key);
+  
   @override
   _NewPostFormState createState() => _NewPostFormState();
 }
@@ -11,12 +15,22 @@ class _NewPostFormState extends State<NewPostForm> {
   final Map<String, dynamic> newPost = {};
 
   @override
+  void initState() {
+    super.initState();
+    newPost['imageURL'] = widget.imageURL;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          LimitedBox(
+            maxHeight: _imageMaxHeight(context),
+            child: Image.network(widget.imageURL),
+          ),
           SizedBox(height: 10),
           TextFormField(
             keyboardType: TextInputType.number,
@@ -35,6 +49,14 @@ class _NewPostFormState extends State<NewPostForm> {
         ],
       ),
     );
+  }
+
+  double _imageMaxHeight(BuildContext context) {
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      return 0.5 * MediaQuery.of(context).size.height;
+    } else {
+      return 0.5 * MediaQuery.of(context).size.height;
+    }
   }
 
   String _quantityValidator(String value) {

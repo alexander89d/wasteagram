@@ -3,6 +3,10 @@ import '../widgets/new_post_form.dart';
 import '../widgets/wasteagram_scaffold.dart';
 
 class NewPostScreen extends StatelessWidget {
+  final String imageURL;
+
+  NewPostScreen({Key key, this.imageURL}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return WasteagramScaffold(
@@ -12,7 +16,7 @@ class NewPostScreen extends StatelessWidget {
           widthFactor: 0.9,
           heightFactor: 0.9,
           child: SingleChildScrollView(
-            child: NewPostForm(),
+            child: NewPostForm(imageURL: imageURL),
           ),
         ),
       ),
