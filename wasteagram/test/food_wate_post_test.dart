@@ -3,14 +3,14 @@ import 'package:wasteagram/models/food_waste_post.dart';
 
 void main() {
   test('Post created from map should have appropriate values', () {
-    final date = DateTime.parse('2020-02-04');
+    final date = DateTime(2020, 02, 04);
     final imageURL = 'www.somewebsite.com';
     final quantity = 50;
     final latitude = 75.2;
     final longitude = 28.3;
 
     final post = FoodWastePost.fromMap({
-      'date': date.toString(),
+      'date': date,
       'imageURL': imageURL,
       'quantity': quantity,
       'latitude': latitude.toString(),
@@ -26,7 +26,7 @@ void main() {
 
   test('Formatted date with year matches expected format.', () {
     final post = FoodWastePost(
-      date: DateTime.parse('2020-02-02'),
+      date: DateTime(2020, 02, 02),
       imageURL: 'www.anotherwebsite.com',
       quantity: 80,
       latitude: -5.5,
@@ -41,7 +41,7 @@ void main() {
 
   test('Formatted date without year matches expected format.', () {
     final post = FoodWastePost(
-      date: DateTime.parse('2020-02-02'),
+      date: DateTime(2020, 02, 02),
       imageURL: 'www.anotherwebsite.com',
       quantity: 80,
       latitude: -5.5,

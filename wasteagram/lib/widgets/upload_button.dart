@@ -16,8 +16,6 @@ class UploadButton extends StatefulWidget {
 class _UploadButtonState extends State<UploadButton> {
   final locationService = Location();
   
-  // TODO: Figure out how to sort posts from newest to oldest
-  // TODO: Figure out what happens if user denies permission (if time).
   @override
   Widget build(BuildContext context) {
     return Row(
