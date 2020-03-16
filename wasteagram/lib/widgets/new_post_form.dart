@@ -33,10 +33,9 @@ class _NewPostFormState extends State<NewPostForm> {
             portraitMaxHeightFactor: 0.5,
             landscapeMaxHeightFactor: 0.5,
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 50),
           TextFormField(
             keyboardType: TextInputType.number,
-            autofocus: true,
             decoration: InputDecoration(
               labelText: 'Number of Items',
               border: OutlineInputBorder(),
