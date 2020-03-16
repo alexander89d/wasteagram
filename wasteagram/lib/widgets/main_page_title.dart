@@ -17,7 +17,10 @@ class _MainPageTitleState extends State<MainPageTitle> {
           snapshot.data.documents.forEach( (post) {
             totalQuantityWasted += post['quantity'];
           });
-          return Text('Wasteagram - $totalQuantityWasted');
+          return Semantics(
+            label: 'Number at end of title represents total number of items wasted accross all posts',
+            child: Text('Wasteagram - $totalQuantityWasted'),
+          );
         } else {
           return Text('Wasteagram');
         }

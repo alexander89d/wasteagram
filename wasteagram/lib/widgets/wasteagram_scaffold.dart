@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class WasteagramScaffold extends StatelessWidget {
   final Widget title;
   final Widget body;
-  final FloatingActionButton fab;
+  final Widget fab;
 
   WasteagramScaffold({
     Key key, 

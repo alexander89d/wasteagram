@@ -21,24 +21,29 @@ class _UploadButtonState extends State<UploadButton> {
     return Row(
       children: [
         Expanded(
-          child: RaisedButton(
-            onPressed: () async {
-              if (widget.formKey.currentState.validate()) {
-                widget.formKey.currentState.save();
-                final locationData = await retrieveLocation();
-                if (locationData == null) {
-                  return;
+          child: Semantics(
+            button: true,
+            label: 'Upload post.',
+            onTapHint: 'Upload post.',
+            child: RaisedButton(
+              onPressed: () async {
+                if (widget.formKey.currentState.validate()) {
+                  widget.formKey.currentState.save();
+                  final locationData = await retrieveLocation();
+                  if (locationData == null) {
+                    return;
+                  }
+                  widget.newPost['latitude'] = '${locationData.latitude}';
+                  widget.newPost['longitude'] = '${locationData.longitude}';
+                  widget.newPost['date'] = DateTime.now();
+                  Firestore.instance.collection('posts').add(widget.newPost);
+                  Navigator.of(context).pop();
                 }
-                widget.newPost['latitude'] = '${locationData.latitude}';
-                widget.newPost['longitude'] = '${locationData.longitude}';
-                widget.newPost['date'] = DateTime.now();
-                Firestore.instance.collection('posts').add(widget.newPost);
-                Navigator.of(context).pop();
-              }
-            },
-            child: Icon(
-              Icons.cloud_upload,
-              size: 50.0,  
+              },
+              child: Icon(
+                Icons.cloud_upload,
+                size: 50.0,  
+              ),
             ),
           ),
         ),

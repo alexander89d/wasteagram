@@ -12,17 +12,23 @@ class ListScreen extends StatelessWidget {
     return WasteagramScaffold(
       title: MainPageTitle(),
       body: PostList(),
-      fab: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () async {
-          _pushLoadingScreen(context);
-          final imageURL = await _chooseImage();
-          if (imageURL != null) {
-            _pushReplacementNewPostScreen(context, imageURL);
-          } else {
-            Navigator.of(context).pop();
-          }
-        },
+      fab: Semantics(
+        button: true,
+        onTapHint: 'Add new post.',
+        onLongPressHint: 'Show tooltip.',
+        child: FloatingActionButton(
+          tooltip: 'Add new post',
+          child: Icon(Icons.add),
+          onPressed: () async {
+            _pushLoadingScreen(context);
+            final imageURL = await _chooseImage();
+            if (imageURL != null) {
+              _pushReplacementNewPostScreen(context, imageURL);
+            } else {
+              Navigator.of(context).pop();
+            }
+          },
+        ),
       ),
     );
   }

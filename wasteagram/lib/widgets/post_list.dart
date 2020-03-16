@@ -19,19 +19,23 @@ class _PostListState extends State<PostList> {
             itemCount: snapshot.data.documents.length,
             itemBuilder: (context, index) {
               final post = FoodWastePost.fromMap(snapshot.data.documents[index]);
-              return ListTile(
-                title: Text('${post.formattedDateWithoutYear}'),
-                trailing: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    shape: BoxShape.circle,
+              return Semantics(
+                label: 'A food waste post with a date and number of items wasted.',
+                onTapHint: 'View post details.',
+                child: ListTile(
+                  title: Text('${post.formattedDateWithoutYear}'),
+                  trailing: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      shape: BoxShape.circle,
+                    ),
+                    padding: EdgeInsets.all(12),
+                    child: Text('${post.quantity}'),
                   ),
-                  padding: EdgeInsets.all(12),
-                  child: Text('${post.quantity}'),
+                  onTap: () {
+                    _pushDetailScreen(context, post);
+                  },
                 ),
-                onTap: () {
-                  _pushDetailScreen(context, post);
-                },
               );
             }
           );

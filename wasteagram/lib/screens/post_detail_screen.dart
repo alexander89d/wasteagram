@@ -25,10 +25,14 @@ class DetailScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline,
                 ),
                 SizedBox(height: 20.0),
-                ImageLimitedBox(
-                  imageURL: post.imageURL,
-                  portraitMaxHeightFactor: 0.5,
-                  landscapeMaxHeightFactor: 0.5,
+                Semantics(
+                  image: true,
+                  label: 'Wasted food.',
+                  child: ImageLimitedBox(
+                    imageURL: post.imageURL,
+                    portraitMaxHeightFactor: 0.5,
+                    landscapeMaxHeightFactor: 0.5,
+                  ),
                 ),
                 SizedBox(height: 20),
                 Text(
@@ -36,9 +40,12 @@ class DetailScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline,
                 ),
                 SizedBox(height: 20),
-                Text(
-                  '(${post.latitude}, ${post.longitude})',
-                  style: Theme.of(context).textTheme.headline,
+                Semantics(
+                  label: 'Location where post was uploaded, formatted ast (latitude, longitude).',
+                  child: Text(
+                    '(${post.latitude}, ${post.longitude})',
+                    style: Theme.of(context).textTheme.headline,
+                  ),
                 ),
               ],
             ),

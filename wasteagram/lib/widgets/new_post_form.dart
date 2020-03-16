@@ -28,22 +28,30 @@ class _NewPostFormState extends State<NewPostForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ImageLimitedBox(
-            imageURL: widget.imageURL,
-            portraitMaxHeightFactor: 0.5,
-            landscapeMaxHeightFactor: 0.5,
+          Semantics(
+            image: true,
+            label: 'Wasted food.',
+            child: ImageLimitedBox(
+              imageURL: widget.imageURL,
+              portraitMaxHeightFactor: 0.5,
+              landscapeMaxHeightFactor: 0.5,
+            ),
           ),
           SizedBox(height: 50),
-          TextFormField(
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: 'Number of Items',
-              border: OutlineInputBorder(),
+          Semantics(
+            textField: true,
+            label: 'Number of items wasted.',
+            child: TextFormField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Number of Items',
+                border: OutlineInputBorder(),
+              ),
+              onSaved: (value) {
+                newPost['quantity'] = int.parse(value);
+              },
+              validator: _quantityValidator,
             ),
-            onSaved: (value) {
-              newPost['quantity'] = int.parse(value);
-            },
-            validator: _quantityValidator,
           ),
           SizedBox(height: 50),
           UploadButton(formKey: formKey, newPost: newPost),
