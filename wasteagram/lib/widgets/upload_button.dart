@@ -33,7 +33,7 @@ class _UploadButtonState extends State<UploadButton> {
                 }
                 widget.newPost['latitude'] = '${locationData.latitude}';
                 widget.newPost['longitude'] = '${locationData.longitude}';
-                widget.newPost['date'] = DateTime.now().toString();
+                widget.newPost['date'] = DateTime.now();
                 Firestore.instance.collection('posts').add(widget.newPost);
                 Navigator.of(context).pop();
               }

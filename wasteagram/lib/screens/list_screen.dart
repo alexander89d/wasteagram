@@ -15,11 +15,27 @@ class ListScreen extends StatelessWidget {
       fab: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () async {
+          _pushLoadingScreen(context);
           final imageURL = await _chooseImage();
           if (imageURL != null) {
-            _pushNewPostScreen(context, imageURL);
+            _pushReplacementNewPostScreen(context, imageURL);
+          } else {
+            Navigator.of(context).pop();
           }
         },
+      ),
+    );
+  }
+
+  void _pushLoadingScreen(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (context) {
+          return WasteagramScaffold(
+            title: Text('Wasteagram'), 
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
       ),
     );
   }
@@ -37,8 +53,8 @@ class ListScreen extends StatelessWidget {
     return imageURL;
   }
 
-  void _pushNewPostScreen(BuildContext context, String imageURL) {
-    Navigator.of(context).push(
+  void _pushReplacementNewPostScreen(BuildContext context, String imageURL) {
+    Navigator.of(context).pushReplacement(
       MaterialPageRoute<void>(
         builder: (context) {
           return NewPostScreen(imageURL: imageURL);

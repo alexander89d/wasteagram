@@ -12,8 +12,10 @@ class FoodWastePost {
   FoodWastePost({this.date, this.imageURL, this.quantity, this.latitude, this.longitude});
 
   factory FoodWastePost.fromMap(dynamic postData) {
+    print('nothing');
+    
     return FoodWastePost(
-      date: DateTime.parse(postData['date']),
+      date: DateTime.fromMillisecondsSinceEpoch(postData['date'].millisecondsSinceEpoch),
       imageURL: postData['imageURL'],
       quantity: postData['quantity'],
       latitude: double.parse(postData['latitude']),
